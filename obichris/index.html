@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TorqueHaus performance and replacement parts for modern cars.">
+    <title>TorqueHaus | Built for the drive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #121313;
+            --paper: #f3f0e9;
+            --line: #d9d4c9;
+            --muted: #686a66;
+            --accent: #e9552b;
+            --lime: #d9f34a;
+            --card: #fffdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .announcement {
+            background: var(--lime);
+            color: var(--ink);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            padding: 9px 5vw;
+            text-transform: uppercase;
+        }
+
+        header {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1320px;
+            padding: 24px 5vw;
+        }
+
+        .product-image1 {
+            
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+         .product-image1 img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+            width: 100%;
+        }
+
+
+        .logo {
+            color: var(--ink);
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -.02em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: var(--ink);
+            color: #fff;
+            min-height: 490px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::after {
+            background: linear-gradient(90deg, rgba(18, 19, 19, .98) 15%, rgba(18, 19, 19, .7) 52%, rgba(18, 19, 19, .15)), url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85") center 58% / cover;
+            content: "";
+            inset: 0;
+            opacity: .9;
+            position: absolute;
+        }
+
+        .hero-content {
+            margin: 0 auto;
+            max-width: 1320px;
+            padding: 88px 5vw 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            margin: 0 0 18px;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Barlow Condensed", sans-serif;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(58px, 8vw, 112px);
+            font-weight: 800;
+            letter-spacing: -.04em;
+            line-height: .86;
+            max-width: 680px;
+        }
+
+        .hero-copy {
+            color: #d0d2cb;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 28px 0;
+            max-width: 420px;
+        }
+
+        .primary {
+            background: var(--accent);
+            border: 0;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            padding: 15px 20px;
+            text-transform: uppercase;
+        }
+
+        .primary:hover {
+            background: #ff6a3c;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 1320px;
+            padding: 62px 5vw 100px;
+        }
+
+        .section-heading {
+            align-items: end;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-size: 48px;
+            letter-spacing: -.02em;
+            line-height: .95;
+        }
+
+        .section-note {
+            background: var(--lime);
+            border-left: 5px solid var(--accent);
+            color: var(--ink);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 540px;
+            padding: 18px 20px;
+        }
+
+        .toolbar {
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            border-top: 1px solid var(--line);
+            display: flex;
+            gap: 26px;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 15px 0;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            padding: 8px 10px;
+            text-transform: uppercase;
+        }
+
+        .filter.active,
+        .filter:hover {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .search {
+            align-items: center;
+            border-bottom: 1px solid var(--ink);
+            display: flex;
+            gap: 8px;
+            width: min(240px, 100%);
+        }
+
+        .search input {
+            background: transparent;
+            border: 0;
+            color: var(--ink);
+            min-width: 0;
+            outline: 0;
+            padding: 8px 0;
+            width: 100%;
+        }
+
+        .search input::placeholder {
+            color: var(--muted);
+        }
+
+        .product-grid {
+            display: grid;
+            gap: 22px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .product-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            position: relative;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.04);
+        }
+
+        .product-image {
+            background: #e7e2d7;
+            height: 245px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-viewer-trigger {
+            background: transparent;
+            border: 0;
+            cursor: zoom-in;
+            display: block;
+            height: 100%;
+            padding: 0;
+            width: 100%;
+        }
+
+        .image-viewer-trigger:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: -3px;
+        }
+
+        .product-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+            width: 100%;
+        }
+
+        .image-viewer {
+            background: var(--ink);
+            border: 0;
+            height: min(90vh, 900px);
+            max-height: 90vh;
+            max-width: 94vw;
+            overflow: visible;
+            inset: 0;
+            margin: auto;
+            padding: 0;
+            position: fixed;
+            width: min(1200px, 94vw);
+        }
+
+        .image-viewer::backdrop {
+            background: rgba(0, 0, 0, .88);
+        }
+
+        .image-viewer img {
+            display: block;
+            height: 100%;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .image-viewer-close {
+            align-items: center;
+            aspect-ratio: 1;
+            background: var(--accent);
+            border: 0;
+            color: #fff;
+            display: flex;
+            font-size: 28px;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 44px;
+            z-index: 1;
+        }
+
+        .image-viewer-close:hover {
+            background: #ff6a3c;
+        }
+
+        .tag {
+            background: var(--lime);
+            font-size: 10px;
+            font-weight: 700;
+            left: 14px;
+            letter-spacing: .08em;
+            padding: 7px 9px;
+            position: absolute;
+            text-transform: uppercase;
+            top: 14px;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-meta {
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 25px;
+            line-height: 1;
+            margin: 8px 0 18px;
+        }
+
+        .product-bottom {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .contact-link {
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .contact-link:hover {
+            color: var(--ink);
+        }
+
+        .empty {
+            color: var(--muted);
+            grid-column: 1 / -1;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .trust-strip {
+            align-items: stretch;
+            border-bottom: 1px solid var(--line);
+            border-top: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 70px;
+        }
+
+        .trust-item {
+            padding: 22px;
+        }
+
+        .trust-item+.trust-item {
+            border-left: 1px solid var(--line);
+        }
+
+        .trust-item strong {
+            display: block;
+            font-family: "Barlow Condensed", sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+        }
+
+        .trust-item span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        footer {
+            background: var(--ink);
+            color: #fff;
+            padding: 42px 5vw;
+        }
+
+        .footer-inner {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1320px;
+        }
+
+        footer .logo {
+            color: #fff;
+        }
+
+        footer p {
+            color: #92958e;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .contact-panel {
+            background: var(--ink);
+            color: #fff;
+            display: grid;
+            gap: 28px;
+            grid-template-columns: 1.3fr repeat(3, 1fr);
+            margin-top: 70px;
+            padding: 34px;
+        }
+
+        .contact-panel .eyebrow {
+            color: var(--lime);
+            margin-bottom: 10px;
+        }
+
+        .contact-panel h2 {
+            color: #fff;
+            font-size: 38px;
+        }
+
+        .contact-detail {
+            border-left: 1px solid #424541;
+            padding-left: 22px;
+        }
+
+        .contact-detail strong {
+            color: var(--lime);
+            display: block;
+            font-size: 11px;
+            letter-spacing: .12em;
+            margin-bottom: 9px;
+            text-transform: uppercase;
+        }
+
+        .contact-detail a,
+        .contact-detail span {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
+            text-decoration: none;
+        }
+
+        .contact-detail a:hover,
+        .contact-detail a:focus-visible {
+            text-decoration: underline;
+        }
+
+        .phone-contact-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .phone-contact-row {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .phone-contact-row .whatsapp-link {
+            color: var(--lime);
+        }
+
+        @media (max-width: 760px) {
+            nav {
+                display: none;
+            }
+
+            header {
+                padding: 20px 5vw;
+            }
+
+            .hero-content {
+                padding: 76px 5vw 88px;
+            }
+
+            .hero {
+                min-height: 510px;
+            }
+
+            .toolbar,
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .search {
+                width: 100%;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-image {
+                height: 180px;
+            }
+
+            .product-image1 {
+                height: 180px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .product-info {
+                padding: 14px;
+            }
+
+            .product-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .trust-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-panel {
+                grid-template-columns: 1fr 1fr;
+                padding: 24px;
+            }
+
+            .contact-panel> :first-child {
+                grid-column: 1 / -1;
+            }
+
+            .trust-item+.trust-item {
+                border-left: 0;
+                border-top: 1px solid var(--line);
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            .contact-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-detail {
+                border-left: 0;
+                border-top: 1px solid #424541;
+                padding: 18px 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="announcement">Browse our catalogue &nbsp; / &nbsp; Ask our team about fitment and availability</div>
+    <header>
+        <a class="logo" href="#top">OBI<span>CHRIS</span></a>
+        <nav aria-label="Main navigation"><a href="#shop">View parts</a><a href="#why-us">Why Obichris</a><a
+                href="#contact">Contact</a></nav>
+        <div class="product-image1"><img src="logo2.jpeg" alt="logo of company"></div>
+    </header>
+
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <p class="eyebrow">Precision parts. Everyday confidence.</p>
+            <h1>Built for<br>the drive.</h1>
+            <p class="hero-copy">Quality replacement and performance parts for the cars you love to keep moving. Browse
+                our range, quality, and contact us for availability.</p><a class="primary" href="#shop">View the
+                range</a>
+        </div>
+    </section>
+
+    <main id="shop">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow" style="color: var(--accent);">The essentials</p>
+                <h2 id="category-title">All Parts</h2>
+            </div>
+            <p class="section-note"><strong> Auto Parts, mechanical, body and upgrade kits.</strong><br>We offer exterior, interior, and mechanical parts. Photos are illustrative only; contact us with your vehicle details to confirm fitment.</p>
+        </div>
+        <div class="toolbar">
+                <div class="filters" role="group" aria-label="Product categories"><button class="filter active"
+                    data-filter="all" aria-pressed="true">All Parts</button><button class="filter"
+                    data-filter="exterior" aria-pressed="false">Exterior</button><button class="filter"
+                    data-filter="mechanical" aria-pressed="false">Mechanical</button></div><label class="search">⌕ <input type="search"
+                    id="search-input" placeholder="Search parts or models" aria-label="Search parts or models"></label>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite">
+            <article class="product-card" data-category="exterior" data-name="toyota camry exterior parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Camry image larger">
+                        <img src="camry.jpeg" alt="Toyota Camry" loading="lazy">
+                    </button>
+                    <span class="tag">Exterior Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Camry</span>
+                    <h3>Exterior Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mechanical" data-name="toyota camry mechanical parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Camry image larger">
+                        <img src="camrymech.jpeg" alt="Toyota Camry" loading="lazy">
+                    </button>
+                    <span class="tag">Mechanical Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Camry</span>
+                    <h3>Mechanical Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="exterior" data-name="toyota corolla exterior parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Corolla image larger">
+                        <img src="corolla.jpeg" alt="Toyota Corolla" loading="lazy">
+                    </button>
+                    <span class="tag">Exterior Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Corolla</span>
+                    <h3>Exterior Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mechanical" data-name="toyota corolla mechanical parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Corolla image larger">
+                        <img src="corollamech.jpeg" alt="Toyota Corolla" loading="lazy">
+                    </button>
+                    <span class="tag">Mechanical Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Corolla</span>
+                    <h3>Mechanical Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="exterior" data-name="toyota highlander exterior parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Highlander image larger">
+                        <img src="highlander.jpeg" alt="Toyota Highlander" loading="lazy">
+                    </button>
+                    <span class="tag">Exterior Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Highlander</span>
+                    <h3>Exterior Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mechanical" data-name="toyota highlander mechanical parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Highlander image larger">
+                        <img src="highlandermech.jpeg" alt="Toyota Highlander" loading="lazy">
+                    </button>
+                    <span class="tag">Mechanical Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Highlander</span>
+                    <h3>Mechanical Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="exterior" data-name="toyota hilux exterior parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Hilux image larger">
+                        <img src="hilux.jpeg" alt="Toyota Hilux" loading="lazy">
+                    </button>
+                    <span class="tag">Exterior Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Hilux</span>
+                    <h3>Exterior Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mechanical" data-name="toyota hilux mechanical parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Hilux image larger">
+                        <img src="hiluxmech.jpeg" alt="Toyota Hilux" loading="lazy">
+                    </button>
+                    <span class="tag">Mechanical Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Hilux</span>
+                    <h3>Mechanical Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="exterior" data-name="toyota prado exterior parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Prado image larger">
+                        <img src="prado.jpeg" alt="Toyota land cruiser Prado" loading="lazy">
+                    </button>
+                    <span class="tag">Exterior Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Prado</span>
+                    <h3>Exterior Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mechanical" data-name="toyota prado mechanical parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Prado image larger">
+                        <img src="pradomech.jpeg" alt="Toyota Prado" loading="lazy">
+                    </button>
+                    <span class="tag">Mechanical Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota land cruiser Prado</span>
+                    <h3>Mechanical Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="exterior" data-name="toyota sienna exterior parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Sienna image larger">
+                        <img src="sienna.jpeg" alt="Toyota Sienna" loading="lazy">
+                    </button>
+                    <span class="tag">Exterior Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Sienna</span>
+                    <h3>Exterior Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <article class="product-card" data-category="mechanical" data-name="toyota sienna mechanical parts">
+                <div class="product-image">
+                    <button class="image-viewer-trigger" type="button" aria-label="View Toyota Sienna image larger">
+                        <img src="siennamech.jpeg" alt="Toyota Sienna" loading="lazy">
+                    </button>
+                    <span class="tag">Mechanical Parts</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-meta">Toyota Sienna</span>
+                    <h3>Mechanical Parts</h3>
+                    <div class="product-bottom"><a class="contact-link" href="#contact">Ask about fitment</a></div>
+                </div>
+            </article>
+            <p class="empty" id="empty-state" hidden>No vehicles match your search.</p>
+        </div>
+        <dialog class="image-viewer" id="image-viewer" aria-label="Image viewer">
+            <button class="image-viewer-close" id="image-viewer-close" type="button" aria-label="Close image viewer">&times;</button>
+            <img id="image-viewer-image" src="" alt="">
+        </dialog>
+        <div class="trust-strip" id="why-us">
+            <div class="trust-item"><strong>Exact-fit promise</strong><span>Parts selected for your make and
+                    model.</span></div>
+            <div class="trust-item"><strong>Current availability</strong><span>Our team can confirm stock within 24
+                    hours.</span></div>
+            <div class="trust-item"><strong>Built to last</strong><span>Reliable materials, tested on real roads.</span>
+            </div>
+
+        <section class="contact-panel" id="contact" aria-labelledby="contact-title">
+            <div>
+                <p class="eyebrow">Talk to Obichris...</p>
+                <h2 id="contact-title">Need a part?</h2>
+            </div>
+            <div class="contact-detail"><strong>Call us</strong>
+                <div class="phone-contact-list">
+                    <div class="phone-contact-row">
+                        <a href="tel:+2348032578525" aria-label="Call +234 803 257 8525">+234 803 257 8525</a>
+                        <span aria-hidden="true">|</span>
+                        <a class="whatsapp-link" href="https://wa.me/2348032578525" target="_blank" rel="noopener noreferrer" aria-label="Chat with +234 803 257 8525 on WhatsApp">WhatsApp</a>
+                    </div>
+                    <div class="phone-contact-row">
+                        <a href="tel:+2348055282864" aria-label="Call +234 805 528 2864">+234 805 528 2864</a>
+                        <span aria-hidden="true">|</span>
+                        <a class="whatsapp-link" href="https://wa.me/2348055282864" target="_blank" rel="noopener noreferrer" aria-label="Chat with +234 805 528 2864 on WhatsApp">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-detail"><strong>Email</strong><a href="mailto:hello@obichris.com">hello@obichris.com</a>
+            </div>
+            <div class="contact-detail"><strong>Visit</strong><span>SHOP R105 GUDU MODEL MAARKET<br>ABUJA,
+                    NIGERIA</span></div>
+        </section>
+
+    </main>
+    <footer>
+        <div class="footer-inner"><a class="logo" href="#top">OBI<span>CHRIS</span></a>
+            <p>Parts for the road ahead · Open Mon-Sat, 7am-6pm</p>
+            <p>© 2026 Obichris</p>
+        </div>
+    </footer>
+    <script>
+        const emptyState = document.querySelector('#empty-state');
+        const productGrid = document.querySelector('#product-grid');
+        const imageViewer = document.querySelector('#image-viewer');
+        const imageViewerImage = document.querySelector('#image-viewer-image');
+        const imageViewerClose = document.querySelector('#image-viewer-close');
+        const cards = [...document.querySelectorAll('.product-card')];
+        const filters = [...document.querySelectorAll('.filter')];
+        const search = document.querySelector('#search-input');
+        const categoryTitle = document.querySelector('#category-title');
+        let activeFilter = 'all';
+        function updateProducts() {
+            const query = search.value.toLowerCase().trim();
+            cards.forEach(card => {
+                const matchesFilter = activeFilter === 'all' || card.dataset.category.split(' ').includes(activeFilter);
+                const matchesSearch = !query || card.dataset.name.includes(query);
+                card.hidden = !(matchesFilter && matchesSearch);
+            });
+            emptyState.hidden = cards.some(card => !card.hidden);
+        }
+        filters.forEach(filter => filter.addEventListener('click', () => {
+            filters.forEach(item => {
+                item.classList.remove('active');
+                item.setAttribute('aria-pressed', 'false');
+            });
+            filter.classList.add('active');
+            filter.setAttribute('aria-pressed', 'true');
+            activeFilter = filter.dataset.filter;
+            categoryTitle.textContent = activeFilter === 'all'
+                ? 'All Parts'
+                : `${activeFilter.charAt(0).toUpperCase()}${activeFilter.slice(1)} Parts`;
+            updateProducts();
+        }));
+        productGrid.addEventListener('click', event => {
+            const trigger = event.target.closest('.image-viewer-trigger');
+            if (!trigger) return;
+
+            const image = trigger.querySelector('img');
+            imageViewerImage.src = image.currentSrc || image.src;
+            imageViewerImage.alt = image.alt;
+            imageViewer.showModal();
+        });
+        imageViewerClose.addEventListener('click', () => imageViewer.close());
+        imageViewer.addEventListener('click', event => {
+            if (event.target === imageViewer) imageViewer.close();
+        });
+        search.addEventListener('input', updateProducts);
+    </script>
+</body>
+
+</html>
